@@ -18,8 +18,44 @@ class Home extends Component{
         );
     };
 
-    handleChange = event => {
-        this.setState({value: event.target.value})
+    handleChange = filterParam => {
+        axios.get(`http://localhost:3000/devices`).then(
+            res => {
+                this.setState({devices: res.data})
+                console.log("filter by ", filterParam);
+
+                let devices = this.state.devices.filter(device => {
+                    return device.type === filterParam;
+                });
+                console.log(devices)
+                this.setState({devices: devices})
+            }
+        );
+    };
+
+    sortByType = sortParam => {
+        console.log("sorting by ", sortParam);
+
+        if(sortParam === "System name"){
+            sortParam = "system_name";
+        }else if(sortParam === "HDD capacity"){
+            sortParam = "hdd_capacity"
+        }
+        let devices = this.state.devices.sort(this.dynamicSort(sortParam));
+        this.setState({devices: devices})
+        console.log(this.state.devices)
+    }
+
+    dynamicSort = property => {
+        var sortOrder = 1;
+        if(property[0] === "-"){
+            sortOrder = -1;
+            property = property.substr(1);
+        }
+        return function (a,b) {
+            var result = (a[property] < b[property]) ? -1 : (a[property] > b[property]) ? 1:0;
+            return result * sortOrder;
+        };
     };
 
     render(){
@@ -29,14 +65,14 @@ class Home extends Component{
             <div className="dash">
                 <div className="sort">
                     <h5>Device Type: </h5>
-                    <select onChange={this.handleChange}>
+                    <select onChange={(e) => this.handleChange(e.target.value)}>
                         <option value="All">All</option>
-                        <option value="Mac">Mac</option>
-                        <option value="Windows server">Windows server</option>
-                        <option value="Windows workstation">Windows workstation</option>
+                        <option value="MAC">Mac</option>
+                        <option value="WINDOWS_SERVER">Windows server</option>
+                        <option value="WINDOWS_WORKSTATION">Windows workstation</option>
                     </select>
                     <h5>Sort by: </h5>
-                    <select>
+                    <select onChange={(e) => this.sortByType(e.target.value)}>
                         <option value="System name" >System name</option>
                         <option value="HDD capacity" >HDD capacity</option>
                     </select>

@@ -8,7 +8,8 @@ class Edit extends Component{
             system_name: '',
             type: '',
             hdd_capacity: ''
-        }
+        },
+        redirect: false
     }
 
     handleClick = (event) => {
@@ -19,6 +20,8 @@ class Edit extends Component{
             body: JSON.stringify(this.state.dets)
         }).then (
             alert("Device has been updated")
+        ).then(
+            () => this.setState({redirect: true})
         )
     };
 
@@ -29,6 +32,10 @@ class Edit extends Component{
     }
 
     render(){
+        const {redirect} = this.state;
+        if (redirect) {
+            return <Navigate replace to="/" />
+        }
         return (
             <div>
                 <div className="add">
@@ -38,7 +45,7 @@ class Edit extends Component{
                             <h4>System name *</h4>
                             <input 
                                 type="text"
-                                name="system name"
+                                name="system_name"
                                 value={this.state.dets.system_name}
                                 onChange={this.inputChange}
                             />
@@ -56,7 +63,7 @@ class Edit extends Component{
                             <h4>HDD Capacity (GB) *</h4>
                             <input 
                                 type="number"
-                                name="capacity"
+                                name="hdd_capacity"
                                 value={this.state.dets.hdd_capacity}
                                 onChange={this.inputChange}
                             />

@@ -1,4 +1,4 @@
-import React, {useState} from 'react'
+import React, {useState, useEffect} from 'react'
 import {Link} from 'react-router-dom'
 
 const Device = ({name, type, capacity, pk}) => {
@@ -14,6 +14,7 @@ const Device = ({name, type, capacity, pk}) => {
                 setDevice({device: res.data})
             }
         )
+        console.log(device)
     };
 
     const handleSubmit = () => {
@@ -25,7 +26,8 @@ const Device = ({name, type, capacity, pk}) => {
             }
         )
     };
-
+    console.log(item)
+    console.log(device)
     return (
         <div>
             <div className="home">
@@ -37,7 +39,7 @@ const Device = ({name, type, capacity, pk}) => {
                             <ol><h4>{capacity} GB</h4></ol>
                         </div>
                         <div className="edit__device">
-                            <Link to="/update"><button className="edit" onClick={handleSubmit}>Edit</button></Link>
+                            <Link to='/update?id=$pk'><button className="edit" onClick={handleSubmit}>Edit</button></Link>
                             <button className="delete" onClick={handleClick}>Delete</button>
                         </div>
                     </li>

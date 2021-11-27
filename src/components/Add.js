@@ -32,7 +32,10 @@ class Add extends Component{
     }
 
     handleChange = event => {
-        this.setState({value:event.target.value})
+        const det = this.state.details;
+        det.type = event.target.value
+        this.setState({details: det})
+        console.log(this.state)
     }
 
     render(){
@@ -58,9 +61,9 @@ class Add extends Component{
                             <h4>Type *</h4>
                             <select value={this.state.details.type} onChange={this.handleChange}>
                                 <option >Select Type</option>
-                                <option >Mac</option>
-                                <option >Windows server</option>
-                                <option >Windows workstation</option>
+                                <option value="MAC">Mac</option>
+                                <option value="WINDOWS_SERVER">Windows server</option>
+                                <option value="WINDOWS_WORKSTATION">Windows workstation</option>
                             </select>
                         </div>
                         <div className="fields">
