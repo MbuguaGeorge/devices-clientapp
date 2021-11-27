@@ -8,7 +8,7 @@ const Main = () => (
     <Routes>
         <Route exact path="/" element={<Home/>}/>
         <Route path="/add" element={<Add/>}/>
-        <Route path="/update" element={<Edit/>}/>
+        <Route path="/update/:id" element={<Edit/>}/>
     </Routes>
 )
 

@@ -12,6 +12,11 @@ class Edit extends Component{
         redirect: false
     }
 
+    componentDidMount(){
+        
+        console.log(this.props)
+    }
+
     handleClick = (event) => {
         event.preventDefault();
         fetch(`http://localhost:3000/devices`, {
@@ -24,6 +29,7 @@ class Edit extends Component{
             () => this.setState({redirect: true})
         )
     };
+
 
     inputChange = event => {
         const det = this.state.dets;

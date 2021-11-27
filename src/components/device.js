@@ -17,15 +17,6 @@ const Device = ({name, type, capacity, pk}) => {
         console.log(device)
     };
 
-    const handleSubmit = () => {
-        fetch(`http://localhost:3000/devices/${pk}/`, {
-            method: 'PUT'
-        }).then(
-            res => {
-                setItem({item: res.data})
-            }
-        )
-    };
     console.log(item)
     console.log(device)
     return (
@@ -39,7 +30,7 @@ const Device = ({name, type, capacity, pk}) => {
                             <ol><h4>{capacity} GB</h4></ol>
                         </div>
                         <div className="edit__device">
-                            <Link to='/update?id=$pk'><button className="edit" onClick={handleSubmit}>Edit</button></Link>
+                            <Link to={`/update/${pk}`}><button className="edit" component={Device}>Edit</button></Link>
                             <button className="delete" onClick={handleClick}>Delete</button>
                         </div>
                     </li>
