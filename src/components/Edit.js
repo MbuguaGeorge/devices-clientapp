@@ -1,9 +1,33 @@
 import React, {Component} from 'react'
+import {Navigate} from 'react-router-dom'
 
 class Edit extends Component{
-    handleClick = () => {
-        alert("Device has been updated")
+
+    state = {
+        dets: {
+            system_name: '',
+            type: '',
+            hdd_capacity: ''
+        }
     }
+
+    handleClick = (event) => {
+        event.preventDefault();
+        fetch(`http://localhost:3000/devices`, {
+            method: 'PUT',
+            headers: {'Content-Type' : 'application/json'},
+            body: JSON.stringify(this.state.dets)
+        }).then (
+            alert("Device has been updated")
+        )
+    };
+
+    inputChange = event => {
+        const det = this.state.dets;
+        det[event.target.name] = event.target.value;
+        this.setState({dets : det})
+    }
+
     render(){
         return (
             <div>
@@ -15,7 +39,8 @@ class Edit extends Component{
                             <input 
                                 type="text"
                                 name="system name"
-
+                                value={this.state.dets.system_name}
+                                onChange={this.inputChange}
                             />
                         </div>
                         <div className="fields">
@@ -32,6 +57,8 @@ class Edit extends Component{
                             <input 
                                 type="number"
                                 name="capacity"
+                                value={this.state.dets.hdd_capacity}
+                                onChange={this.inputChange}
                             />
                         </div>
                         <div className="buttons">
