@@ -76,6 +76,7 @@ class Home extends Component{
                         <option value="System name" >System name</option>
                         <option value="HDD capacity" >HDD capacity</option>
                     </select>
+                    <Link to="/add"><button className="add__device">Add Device</button></Link>
                 </div>
                 {this.state.devices.map(device => (
                     <Device 
@@ -86,7 +87,6 @@ class Home extends Component{
                         capacity = {device.hdd_capacity}
                     />
                 ))}
-                <Link to="/add"><button className="add__device">Add Device</button></Link>
             </div>
         )
     }

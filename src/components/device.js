@@ -1,4 +1,4 @@
-import React, {useState, useEffect} from 'react'
+import React, {useState} from 'react'
 import {Link} from 'react-router-dom'
 
 const Device = ({name, type, capacity, pk}) => {
@@ -13,6 +13,9 @@ const Device = ({name, type, capacity, pk}) => {
             res => {
                 setDevice({device: res.data})
             }
+        ).then(
+            // eslint-disable-next-line no-restricted-globals
+            location.reload()
         )
         console.log(device)
     };

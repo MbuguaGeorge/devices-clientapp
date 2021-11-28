@@ -1,5 +1,5 @@
 import React, {Component} from 'react'
-import {Navigate} from 'react-router-dom'
+import {Navigate, Link} from 'react-router-dom'
 
 class Add extends Component{
 
@@ -76,7 +76,7 @@ class Add extends Component{
                             />
                         </div>
                         <div className="buttons">
-                            <button className="close">Close</button>
+                            <Link to="/" ><button className="close">Close</button></Link>
                             <button className="save" onClick={this.submit}>Save</button>
                         </div>
                     </form>

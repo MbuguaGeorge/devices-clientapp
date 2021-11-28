@@ -1,11 +1,16 @@
 .dash{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
   margin-top: 50px;
-  padding-bottom: 100px;
+}
+.home{
+  display: flex;
+  align-items: center;
 }
 .home ul{
   display: flex;
   flex-direction: column;
-  margin-left: 200px;
   width: 700px;
 }
 .home ul li{
@@ -21,9 +26,10 @@
 .home ul li{
   display: flex;
   align-items: center;
+  justify-content: space-between;
 }
 .edit__device{
-  margin-left: 300px;
+  margin-left: 80px;
 }
 .edit__device .edit{
   padding: 8px 10px;
@@ -47,7 +53,6 @@
 }
 
 .sort{
-  margin-left: 200px;
   display: flex;
 }
 .sort h5{
@@ -62,8 +67,8 @@
 }
 .dash .add__device{
   float: right;
-  margin-right: 410px;
-  margin-top: 10px;
+  margin-left: 160px;
+  margin-top: 20px;
   color: white;
   border: 1px royalblue solid;
   background-color: royalblue;
@@ -87,7 +92,7 @@
 .add form .fields{
   display: flex;
   text-align: center;
-  justify-content: center;
+  justify-content: space-between;
   align-items: center;
 }
 .add form .fields input[type="text"]{
@@ -97,14 +102,14 @@
   font-family: 'Times New Roman', Times, serif;
   font-weight: 500;
   font-size: 1.1rem;
-  width: 300px;
+  width: 283px;
   border: 1px #ddd solid;
 }
 .add form .fields input[type="number"]{
   margin-left: 50px;
   outline: none;
   padding: 7px;
-  width: 300px;
+  width: 283px;
   border: 1px #ddd solid;
   font-family: 'Times New Roman', Times, serif;
   font-weight: 500;
