@@ -9,17 +9,22 @@ class Edit extends Component{
             type: '',
             hdd_capacity: ''
         },
-        redirect: false
+        redirect: false,
+        id: ''
     }
 
     componentDidMount(){
-        
-        console.log(this.props)
+        const id = window.location.pathname
+        const field = id.split('/')
+        const pk = field[2]
+        this.setState({id: pk})
+        console.log(pk)
     }
 
     handleClick = (event) => {
+        let userId = this.state.id
         event.preventDefault();
-        fetch(`http://localhost:3000/devices`, {
+        fetch(`http://localhost:3000/devices/${userId}`, {
             method: 'PUT',
             headers: {'Content-Type' : 'application/json'},
             body: JSON.stringify(this.state.dets)
@@ -35,6 +40,13 @@ class Edit extends Component{
         const det = this.state.dets;
         det[event.target.name] = event.target.value;
         this.setState({dets : det})
+    }
+
+    handleChange = event => {
+        const detail = this.state.dets;
+        detail.type = event.target.value
+        this.setState({dets: detail})
+        console.log(this.state)
     }
 
     render(){
@@ -58,11 +70,11 @@ class Edit extends Component{
                         </div>
                         <div className="fields">
                             <h4>Type *</h4>
-                            <select>
-                                <option value="Select Type" >Select Type</option>
-                                <option value="Mac">Mac</option>
-                                <option value="Windows server" >Windows server</option>
-                                <option value="Windows workstation" >Windows workstation</option>
+                            <select value={this.state.dets.type} onChange={this.handleChange} >
+                                <option >Select Type</option>
+                                <option value="MAC">Mac</option>
+                                <option value="WINDOWS_SERVER" >Windows server</option>
+                                <option value="WINDOWS_WORKSTATION" >Windows workstation</option>
                             </select>
                         </div>
                         <div className="fields">
