@@ -149,3 +149,34 @@
   width: 300px;
   border: 1px #ddd solid;
 }
+
+/* Responsive */
+
+@media only screen and (max-width: 768px) {
+  .home ul{
+    width: 420px;
+  }
+  .edit__device{
+    margin-left: 10px;
+  }
+  .sort h5{
+    padding-left: 15px;
+  }
+  .dash .add__device{
+    margin-left: 50px;
+  }
+  .dash .sort select{
+    width: 70px;
+  }
+  .add{
+    margin: 20px;
+  }
+  .add form .fields input[type="text"],input[type="number"]{
+    width: 230px;
+    margin-left: 0;
+  }
+  .add form .fields select{
+    width: 248px;
+    margin-left: 0;
+  }
+} 
