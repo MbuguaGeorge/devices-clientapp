@@ -29,7 +29,7 @@ const Device = ({name, type, capacity, pk}) => {
                     <li>
                         <div>
                             <ol><h4>{name}</h4></ol>
-                            <ol><span>{type}</span></ol>
+                            <ol><span><p>{type}</p></span></ol>
                             <ol><h4>{capacity} GB</h4></ol>
                         </div>
                         <div className="edit__device">

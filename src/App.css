@@ -208,4 +208,7 @@
   .add form .fields h4{
     margin-left: 100px;
   }
+  .home ul li ol p, .home ul li ol h4{
+    font-size: 0.8rem;
+  }
 }
