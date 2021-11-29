@@ -1,5 +1,6 @@
 import React, {Component} from 'react'
 import {Navigate, Link} from 'react-router-dom'
+import axios from 'axios'
 
 class Edit extends Component{
 
@@ -7,7 +8,8 @@ class Edit extends Component{
         dets: {
             system_name: '',
             type: '',
-            hdd_capacity: ''
+            hdd_capacity: '',
+            id: ''
         },
         redirect: false,
         id: ''
@@ -18,7 +20,14 @@ class Edit extends Component{
         const field = id.split('/')
         const pk = field[2]
         this.setState({id: pk})
-        console.log(pk)
+
+        axios.get(`http://localhost:3000/devices/${pk}`).then (
+            res => {
+                this.setState({dets: res.data})
+                console.log(this.state.dets)
+            }
+        )
+
     }
 
     handleClick = (event) => {
