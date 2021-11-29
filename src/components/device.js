@@ -33,7 +33,7 @@ const Device = ({name, type, capacity, pk}) => {
                             <ol><h4>{capacity} GB</h4></ol>
                         </div>
                         <div className="edit__device">
-                            <Link to={`/update/${pk}`}><button className="edit" component={Device}>Edit</button></Link>
+                            <Link to={`/update/${pk}`}><button className="edit">Edit</button></Link>
                             <button className="delete" onClick={handleClick}>Delete</button>
                         </div>
                     </li>

@@ -26,7 +26,13 @@ class Home extends Component{
 
                 let devices = this.state.devices.filter(device => {
                     return device.type === filterParam;
+
                 });
+                if (filterParam === 'ALL'){
+                    // eslint-disable-next-line no-restricted-globals
+                    location.reload()
+                }
+
                 console.log(devices)
                 this.setState({devices: devices})
             }
@@ -66,7 +72,7 @@ class Home extends Component{
                 <div className="sort">
                     <h5>Device Type: </h5>
                     <select onChange={(e) => this.handleChange(e.target.value)}>
-                        <option value="All">All</option>
+                        <option value="ALL">All</option>
                         <option value="MAC">Mac</option>
                         <option value="WINDOWS_SERVER">Windows server</option>
                         <option value="WINDOWS_WORKSTATION">Windows workstation</option>
